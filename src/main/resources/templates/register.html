@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+        h1 {
+            color: #2b5a83;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .form-control:focus {
+            border-color: #2b5a83;
+            box-shadow: 0 0 5px rgba(43, 90, 131, 0.5);
+        }
+        .btn-primary {
+            background-color: #2b5a83;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #214b6d;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .form-check-label {
+            color: #495057;
+        }
+        .terms-box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #f8f9fa;
+            color: #555;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 타이틀 -->
+    <h1>회원가입</h1>
+
+    <!-- 회원가입 폼 -->
+    <form action="/auth/register" method="post">
+        <!-- 이름 -->
+        <div class="mb-4">
+            <label for="name" class="form-label">이름</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="mb-4">
+            <label for="email" class="form-label">이메일</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요" required>
+        </div>
+
+        <!-- 비밀번호 -->
+        <div class="mb-4">
+            <label for="pwd" class="form-label">비밀번호</label>
+            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
+        </div>
+
+        <!-- 주소 -->
+        <div class="mb-4">
+            <label for="address" class="form-label">주소</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="주소를 입력하세요">
+        </div>
+
+        <!-- 생년월일 -->
+        <div class="mb-4">
+            <label for="birthdate" class="form-label">생년월일</label>
+            <input type="date" class="form-control" id="birthdate" name="birthdate">
+        </div>
+
+        <!-- 약관 및 동의 -->
+        <div class="mb-4">
+            <p><strong>약관 및 동의</strong></p>
+
+            <!-- 서비스 이용 약관 -->
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms1" required>
+                <label class="form-check-label" for="terms1">
+                    서비스 이용 약관에 동의합니다.
+                </label>
+            </div>
+            <div class="terms-box">
+                서비스 이용 약관 내용: <br>
+                - 본 서비스는 사용자 편의를 위한 목적으로 제공됩니다.<br>
+                - 허가되지 않은 방식으로 사용 시 계정이 제한될 수 있습니다.<br>
+                - 모든 이용자는 공정한 사용 정책을 따라야 합니다.
+            </div>
+
+            <!-- 개인정보 수집 및 이용 동의 -->
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" id="terms2" required>
+                <label class="form-check-label" for="terms2">
+                    개인정보 수집 및 이용에 동의합니다.
+                </label>
+            </div>
+            <div class="terms-box">
+                개인정보 수집 및 이용 내용: <br>
+                - 회원가입 시 제공된 정보는 회원 관리 목적으로만 사용됩니다.<br>
+                - 개인정보는 법적 요구가 없는 한 외부로 공유되지 않습니다.<br>
+                - 사용자는 언제든 자신의 정보를 열람하거나 삭제 요청할 수 있습니다.
+            </div>
+
+            <!-- 마케팅 정보 수신 동의 -->
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" id="terms3" required>
+                <label class="form-check-label" for="terms3">
+                    마케팅 정보 수신에 동의합니다.
+                </label>
+            </div>
+            <div class="terms-box">
+                마케팅 정보 수신 내용: <br>
+                - 할인, 이벤트, 프로모션 관련 정보를 이메일/SMS로 발송합니다.<br>
+                - 언제든 마케팅 정보 수신을 거부할 수 있습니다.<br>
+                - 본 동의는 필수가 아닌 선택 사항입니다.
+            </div>
+        </div>
+
+        <!-- 버튼 -->
+        <div class="d-grid gap-3">
+            <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" disabled>회원가입</button>
+            <a href="/" class="btn btn-secondary btn-lg">메인페이지로 돌아가기</a>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    const nameField = document.getElementById('name');
+    const emailField = document.getElementById('email');
+    const pwdField = document.getElementById('pwd');
+    const checkboxes = document.querySelectorAll('.form-check-input');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function validateForm() {
+        const isNameValid = nameField.value.trim() !== '';
+        const isEmailValid = emailField.value.trim() !== '';
+        const isPwdValid = pwdField.value.trim() !== '';
+        const areTermsChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+
+        // 모든 조건 충족 시 버튼 활성화
+        submitBtn.disabled = !(isNameValid && isEmailValid && isPwdValid && areTermsChecked);
+    }
+
+    // 각 필드 및 체크박스에 이벤트 리스너 추가
+    nameField.addEventListener('input', validateForm);
+    emailField.addEventListener('input', validateForm);
+    pwdField.addEventListener('input', validateForm);
+    checkboxes.forEach(checkbox => checkbox.addEventListener('change', validateForm));
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약속과 책임</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e3f2fd;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2b5a83;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .intro-text {
+            text-align: center;
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: #2b5a83;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .icon-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .icon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .icon-card i {
+            font-size: 3rem;
+            color: #2b5a83;
+            margin-bottom: 10px;
+        }
+        .icon-card h4 {
+            color: #2b5a83;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .icon-card p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .responsibility-list {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .responsibility-list h4 {
+            color: #2b5a83;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .responsibility-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .responsibility-list ul li {
+            color: #555;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .responsibility-list ul li::before {
+            content: "•";
+            color: #2b5a83;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>약속과 책임</h1>
+    <p class="intro-text">
+        우리 회사는 고객, 환경, 직원, 사회 모두에게 책임을 다하며 지속 가능한 미래를 위한 약속을 실천합니다.
+    </p>
+
+    <!-- 고객에 대한 약속 -->
+    <div class="section">
+        <h2 class="section-title">고객에 대한 약속</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="icon-card">
+                    <i class="bi bi-shield-check"></i>
+                    <h4>최고 품질 제공</h4>
+                    <p>고객이 신뢰할 수 있는 품질의 제품과 서비스를 제공합니다.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="icon-card">
+                    <i class="bi bi-people"></i>
+                    <h4>고객 중심 서비스</h4>
+                    <p>고객의 목소리를 경청하고, 고객 만족을 최우선으로 합니다.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="icon-card">
+                    <i class="bi bi-eye"></i>
+                    <h4>투명성</h4>
+                    <p>제품과 서비스에 대한 명확하고 투명한 정보를 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 윤리적 책임 -->
+    <div class="responsibility-list">
+        <h4>윤리적 책임</h4>
+        <ul>
+            <li>기업 윤리 준수: 공정한 비즈니스 관행과 법규 준수</li>
+            <li>사회적 책임: 지역사회와 협력하여 긍정적인 영향을 미침</li>
+            <li>공정한 기회: 모든 직원과 협력사에 공정한 기회 제공</li>
+        </ul>
+    </div>
+
+    <!-- 환경에 대한 책임 -->
+    <div class="responsibility-list">
+        <h4>환경에 대한 책임</h4>
+        <ul>
+            <li>지속 가능한 기술 개발: 친환경 기술 및 자원 활용</li>
+            <li>탄소 배출 감소: 친환경 공정을 통해 탄소 발자국 줄이기</li>
+            <li>자연 보호: 다양한 자연 보호 활동 참여</li>
+        </ul>
+    </div>
+
+    <!-- 직원에 대한 약속 -->
+    <div class="responsibility-list">
+        <h4>직원에 대한 약속</h4>
+        <ul>
+            <li>안전한 근무 환경 제공</li>
+            <li>직원의 역량 개발을 위한 교육 기회 제공</li>
+            <li>차별 없는 공정한 조직 문화 확립</li>
+        </ul>
+    </div>
+
+    <!-- 미래에 대한 책임 -->
+    <div class="responsibility-list">
+        <h4>미래에 대한 책임</h4>
+        <p>
+            혁신적인 기술 개발과 사회적 가치를 높이는 프로젝트로 더 나은 미래를 만들어갑니다.
+        </p>
+    </div>
+</div>
+
+<footer>
+    <p>Copyright © 2024 SPlus. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

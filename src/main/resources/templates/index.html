@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>살더하기 솔루션 - 이미지 업로드</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2b5a83;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .content-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2b5a83;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #2b5a83;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #214b6d;
+        }
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+        .instructions {
+            font-size: 1rem;
+            color: #555;
+            margin-left: 30px;
+        }
+        .instruction-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .instruction-card h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2b5a83;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #ddd;
+            margin-top: 20px;
+        }
+        .navbar {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: #2b5a83 !important;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #2b5a83 !important;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #214b6d !important;
+        }
+        .btn-outline-primary {
+            color: #2b5a83;
+            border: 1px solid #2b5a83;
+        }
+        .btn-outline-primary:hover {
+            background-color: #2b5a83;
+            color: #fff;
+        }
+        .detection-alert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            z-index: 1000;
+        }
+        .form-container {
+            text-align: center;
+        }
+        .form-container .form-label {
+            text-align: left;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<!-- 경고 메시지 -->
+<div id="detectionAlert" class="detection-alert">
+    객체가 탐지되었습니다!
+</div>
+
+<!-- 헤더 영역 -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">팀김박신</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/introduction.html">소개</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/techandservice.html">기술과 서비스</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/buyproduct.html">제품구매</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/responsibility.html">약속과 책임</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://news.naver.com/" target="_blank">뉴스</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://finance.naver.com/">투자정보</a></li>
+                </ul>
+                <div class="d-flex">
+                    <span th:if="${isLoggedIn}" class="navbar-text me-3"><strong th:text="${userName} + '님 환영합니다!'"></strong></span>
+                    <a th:if="${isLoggedIn}" href="/users/mypage" class="btn btn-outline-primary me-2">마이페이지</a>
+                    <a th:if="${isLoggedIn}" href="/logout" class="btn btn-outline-primary me-2">로그아웃</a>
+                    <a th:if="${!isLoggedIn}" href="/auth/login" class="btn btn-outline-primary me-2">로그인</a>
+                    <a th:if="${!isLoggedIn}" href="/auth/register" class="btn btn-outline-primary">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- 메인 콘텐츠 영역 -->
+<div class="content-container">
+    <h2 class="title mb-4">살더하기 솔루션</h2>
+    <div class="d-flex">
+        <div class="flex-grow-1">
+            <h5>실시간 스트리밍</h5>
+            <img src="http://localhost:5000/video_feed" alt="실시간 웹캠 스트리밍" class="main-image mb-3">
+            <!-- "검출 확인" 버튼 -->
+            <div class="text-center mt-3">
+                <button id="streamConfirmButton" class="btn btn-primary">실시간 검출 확인</button>
+            </div>
+        </div>
+        <div class="instructions">
+            <div class="instruction-card">
+                <h5>1. 실시간 스트리밍</h5>
+                <p>프로젝트를 선택하면 실시간으로 LA갈비에서 살코기를 탐지할 수 있습니다.</p>
+            </div>
+            <div class="instruction-card">
+                <h5>2. 이미지 업로드</h5>
+                <p>프로젝트를 선택 후 이미지를 업로드하여 분석을 진행하세요.</p>
+            </div>
+            <div class="instruction-card">
+                <h5>3. 분석</h5>
+                <p>이미지 업로드 버튼을 클릭하면 분석이 진행됩니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container mt-4">
+        <form th:action="@{/api/process-image}" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div class="mb-3">
+                <label for="projectSelect" class="form-label">프로젝트 선택</label>
+                <select class="form-control" id="projectSelect" name="projectId" required>
+                    <option value="" disabled selected>프로젝트를 선택하세요</option>
+                    <option th:each="project : ${projects}" th:value="${project.projectCode}" th:text="${project.projectName}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="file" class="form-label">이미지 선택</label>
+                <input type="file" class="form-control" id="file" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">이미지 업로드</button>
+        </form>
+    </div>
+</div>
+
+<!-- 푸터 영역 -->
+<footer>
+    <p>(우)31553 충청남도 아산시 신창면 행목로 45 , TEL 041-111-1234, 대표이사 박상인<br>
+        Copyright © 2024 SPlus. ALL RIGHTS RESERVED. Created by kimparsin.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script>
+    let isAlertDisplayed = false;
+    const alertCooldown = 2000;
+
+    function checkDetectionStatus() {
+        if (isAlertDisplayed) return;
+
+        fetch('http://localhost:5000/capture_status')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Server response is not OK");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.detected && !isAlertDisplayed) {
+                    showDetectionAlert();
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching detection status:", error);
+            });
+
+    }
+
+    function showDetectionAlert() {
+        const alert = document.getElementById("detectionAlert");
+        alert.style.display = "block";
+        isAlertDisplayed = true;
+
+        setTimeout(() => {
+            alert.style.display = "none";
+            setTimeout(() => {
+                isAlertDisplayed = false;
+            }, alertCooldown);
+        }, 1000);
+    }
+
+    setInterval(checkDetectionStatus, 1000);
+
+
+        // 실시간 스트리밍 검출 확인 버튼
+    document.getElementById("streamConfirmButton").addEventListener("click", async () => {
+        const projectId = document.getElementById("projectSelect").value;
+
+        if (!projectId) {
+            alert("프로젝트를 선택하세요!");
+            return;
+        }
+
+        try {
+            // Flask에서 원본 및 검출 이미지를 가져옴
+            const flaskResponse = await fetch("http://localhost:5000/capture_frame", {
+                method: "POST",
+            });
+
+            if (flaskResponse.ok) {
+                const formData = new FormData();
+
+                // Flask에서 반환된 multipart 데이터 읽기
+                const data = await flaskResponse.formData();
+
+                formData.append("projectId", projectId);
+                formData.append("originalImage", data.get("originalImage"));
+                formData.append("processedImage", data.get("processedImage"));
+
+                // Spring Boot로 데이터 전송
+                const springResponse = await fetch("http://localhost:8080/api/upload-captured-images", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                if (springResponse.ok) {
+                    alert("실시간 스트리밍 이미지가 성공적으로 업로드되었습니다!");
+                } else {
+                    alert("Spring Boot 업로드 실패.");
+                }
+            } else {
+                alert("Flask에서 이미지를 가져오지 못했습니다.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
