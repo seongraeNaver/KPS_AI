@@ -17,7 +17,7 @@
 </ul>
 <h3>해결책</h3>
 <ul>
-  <li>YOLOv5 기반의 이미지 세그먼테이션 모델을 활용하여 <strong>살코기 영역 검출</strong> 및 자동화된 정육 공정을 구현.</li>
+  <li>YOLOv11 기반의 이미지 세그먼테이션 모델을 활용하여 <strong>살코기 영역 검출</strong> 및 자동화된 정육 공정을 구현.</li>
   <li><strong>실시간 스트리밍</strong> 환경에서 예측 및 시각화를 지원.</li>
 </ul>
 
@@ -58,7 +58,7 @@
   </li>
   <li><strong>모델 개발</strong>: YOLOv5, YOLOv11, PyTorch, OpenCV</li>
   <li><strong>데이터베이스</strong>: MySQL</li>
-  <li><strong>클라우드 서비스</strong>: AWS (S3, EC2)</li>
+  <li><strong>클라우드 서비스</strong>: AWS S3</li>
   <li><strong>기타 도구</strong>: Labelme, Linux</li>
 </ul>
 
