@@ -114,5 +114,5 @@ python app.py
 <h2>👨‍💻 개발자</h2>
 <ul>
   <li><strong>팀원 이름</strong>: 팀 김박신(김성래, 박상인)</li>
-  <li><strong>문의 사항</strong>: seongraeNaver@example.com</li>
+  <li><strong>문의 사항</strong>: seongraeNaver@naver.com</li>
 </ul>
