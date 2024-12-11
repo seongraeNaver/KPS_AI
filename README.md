@@ -5,7 +5,8 @@
 <hr>
 
 <h2>📚 프로젝트 개요</h2>
-![프로젝트 메인 이미지](https://github.com/seongraeNaver/KPS_AI/blob/master/meatplusmainpage.jpg?raw=true)
+![프로젝트 메인 이미지](https://github.com/seongraeNaver/KPS_AI/blob/master/mainpage.jpg?raw=true)
+
 
 
 <h3>문제 정의</h3>
