@@ -7,6 +7,7 @@
 <h2>📚 프로젝트 개요</h2>
 ![프로젝트 메인 이미지](https://github.com/seongraeNaver/KPS_AI/blob/master/meatplusmainpage.jpg?raw=true)
 
+
 <h3>문제 정의</h3>
 <ul>
   <li>LA갈비의 지방 손질 과정은 전적으로 수작업으로 진행되어 다음과 같은 문제가 발생합니다:
